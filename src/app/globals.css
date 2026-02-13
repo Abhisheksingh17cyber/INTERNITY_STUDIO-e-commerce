@@ -3,25 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a96e;
+}
+
+@layer components {
+  .card-luxury {
+    @apply bg-luxury-card border border-luxury-border rounded-lg transition-all duration-300
+           hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-luxury-black font-semibold px-6 py-3 rounded
+           transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20
+           active:scale-[0.98];
+  }
+
+  .btn-outline-gold {
+    @apply border border-gold text-gold px-6 py-3 rounded
+           transition-all duration-300 hover:bg-gold hover:text-luxury-black;
   }
 }
