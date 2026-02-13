@@ -1,101 +1,108 @@
+import HeroSection from "@/components/HeroSection";
+import ProductCard from "@/components/ProductCard";
+import { products } from "@/data/products";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <HeroSection />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      {/* Featured Products */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <p className="text-xs tracking-[0.3em] text-gold uppercase mb-3">
+          The Collection
+        </p>
+        <h2 className="text-3xl font-light tracking-wide mb-4">
+          Exceptional spirits for exceptional moments
+        </h2>
+        <div className="w-16 h-px bg-gold mb-12" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* Brand Story */}
+      <section id="story" className="bg-luxury-dark py-24">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-luxury-card">
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/internity-elyx.png"
+              alt="INTERNITY Elyx Reserve"
+              fill
+              className="object-contain p-8"
             />
-            Deploy now
-          </a>
+            <div className="absolute inset-4 border border-gold/20 rounded-lg pointer-events-none" />
+          </div>
+
+          {/* Text */}
+          <div>
+            <p className="text-xs tracking-[0.3em] text-gold uppercase mb-3">
+              Our Story
+            </p>
+            <h2 className="text-3xl font-light tracking-wide mb-6">
+              Born from an obsession with perfection
+            </h2>
+            <p className="text-luxury-muted leading-relaxed mb-4">
+              INTERNITY VODKA was founded on a singular belief: that the pursuit
+              of perfection is not a destination, but a journey. Every bottle we
+              produce is a testament to this philosophy — from the careful
+              selection of the finest grains to the precision of our
+              multi-stage distillation process.
+            </p>
+            <p className="text-luxury-muted leading-relaxed mb-8">
+              Our master distillers combine centuries-old techniques with modern
+              innovation, creating spirits that transcend the ordinary. Each
+              expression in our collection tells a unique story, united by an
+              unwavering commitment to excellence.
+            </p>
+            <div className="w-16 h-px bg-gold mb-8" />
+            <div className="flex gap-12">
+              <div>
+                <p className="text-2xl text-gold font-light">6x</p>
+                <p className="text-[10px] text-luxury-muted uppercase tracking-widest mt-1">
+                  Distilled
+                </p>
+              </div>
+              <div>
+                <p className="text-2xl text-gold font-light">&lt; 2,000</p>
+                <p className="text-[10px] text-luxury-muted uppercase tracking-widest mt-1">
+                  Bottles
+                </p>
+              </div>
+              <div>
+                <p className="text-2xl text-gold font-light">100%</p>
+                <p className="text-[10px] text-luxury-muted uppercase tracking-widest mt-1">
+                  Natural
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-light tracking-[0.15em] mb-6">
+            EXPERIENCE INTERNITY
+          </h2>
+          <p className="text-luxury-muted leading-relaxed mb-8 max-w-2xl mx-auto">
+            Discover our complete range of premium spirits. Each bottle is a
+            masterpiece of craft and precision, waiting to elevate your most
+            memorable moments.
+          </p>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/products"
+            className="btn-gold text-sm uppercase tracking-widest inline-block"
           >
-            Read our docs
+            Shop the Collection
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }

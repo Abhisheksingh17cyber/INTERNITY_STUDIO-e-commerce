@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { CartProvider } from "@/context/CartContext";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import AgeVerification from "@/components/AgeVerification";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,8 +18,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "INTERNITY STUDIO",
-  description: "INTERNITY STUDIO e-commerce store",
+  title: {
+    default: "INTERNITY VODKA | Premium Spirits",
+    template: "%s | INTERNITY VODKA",
+  },
+  description:
+    "Discover INTERNITY VODKA - where precision meets purity. Premium vodka crafted for the discerning palate.",
 };
 
 export default function RootLayout({
@@ -26,9 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-luxury-black text-foreground font-sans`}
       >
-        {children}
+        <CartProvider>
+          <AgeVerification />
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
