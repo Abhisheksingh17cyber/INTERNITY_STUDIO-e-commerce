@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, ReactNode } from "react";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
-  animation?: "fade-in" | "slide-up" | "slide-left" | "slide-right" | "scale-in" | "slide-down";
+  animation?: "fade-in" | "slide-up" | "slide-left" | "slide-right" | "scale-in" | "slide-down" | "gold-line";
   delay?: number;
   className?: string;
   threshold?: number;
